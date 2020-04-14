@@ -8,8 +8,18 @@
 # script is sourced, the variable $dir must contain the
 # full path name of this file's directory.
 
-package ifneeded diffusion_coefficient 1.0 [list source [file join $dir diffusion_coefficient.tcl]]
-package ifneeded diffusion_coefficient_gui 1.0 [list source [file join $dir diffusion_coefficient_gui.tcl]]
+package ifneeded diffusion_coefficient 1.2 [list source [file join $dir diffusion_coefficient.tcl]]
+package ifneeded diffusion_coefficient_gui 1.2 [list source [file join $dir diffusion_coefficient_gui.tcl]]
 
-catch { package require diffusion_coefficient_gui; diffusion_coefficient_gui::register_menu; } 
+
+# The package used to misuse this file to register the plugin as
+# follows.  However, this does not work reliably in every
+# configuration.  Sourcing the included load.tcl file is safer.
+
+# catch {
+#     source [file join $dir diffusion_coefficient_gui.tcl]
+#     diffusion_coefficient_gui::register_menu
+# }
+
+# catch { package require diffusion_coefficient_gui; diffusion_coefficient_gui::register_menu; } 
 
